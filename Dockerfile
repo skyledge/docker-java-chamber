@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim
+FROM openjdk:17-slim
 
 ENV CHAMBER_VERSION v2.2.0
 
