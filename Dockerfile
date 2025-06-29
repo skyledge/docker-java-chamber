@@ -1,6 +1,6 @@
-FROM openjdk:21-slim
+FROM eclipse-temurin:24-jdk
 
-ENV CHAMBER_VERSION v2.2.0
+ENV CHAMBER_VERSION=v2.2.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl
 
