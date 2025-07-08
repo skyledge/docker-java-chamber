@@ -2,7 +2,8 @@ name: Build and Push Multi-Arch Docker Image
 
 on:
   push:
-    # Triggers on push to any branch
+    branches:
+      - master
 
 jobs:
   build-and-push:
