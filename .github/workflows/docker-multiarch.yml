@@ -29,6 +29,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Extract branch name
+        id: extract_branch
+        run: |
+          ref=${GITHUB_REF#refs/heads/}
+          # Sanitize branch name for Docker tag (lowercase, no slashes)
+          safe_ref=$(echo "$ref" | tr '[:upper:]' '[:lower:]' | tr -c 'a-z0-9._-' '-')
+          echo "branch=$safe_ref" >> $GITHUB_OUTPUT
+
       - name: Build and push multi-arch image
         uses: docker/build-push-action@v5
         with:
@@ -38,4 +46,5 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ steps.extract_branch.outputs.branch }}
             ghcr.io/${{ github.repository }}:${{ github.sha }} 
