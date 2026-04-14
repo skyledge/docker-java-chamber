@@ -1,5 +1,5 @@
 ARG TARGETPLATFORM  # auto-filled by Buildx
-FROM eclipse-temurin:24-jdk
+FROM eclipse-temurin:25-jdk
 
 ENV CHAMBER_VERSION=v3.0.0
 
