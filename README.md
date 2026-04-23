@@ -7,35 +7,24 @@ A Docker image combining [Eclipse Temurin JDK 25](https://hub.docker.com/_/eclip
 | Registry | Image |
 |---|---|
 | Docker Hub | `skyledge/java-chamber` |
-| GitHub Container Registry | `ghcr.io/skyledge/docker-java-chamber` |
 
 ## CI / Publishing
 
 The GitHub Actions workflow builds and pushes a multi-arch image automatically.
 
-### On push to `master`
-
-Pushes to **GHCR only**:
-
-- `ghcr.io/skyledge/docker-java-chamber:latest`
-- `ghcr.io/skyledge/docker-java-chamber:master`
-- `ghcr.io/skyledge/docker-java-chamber:<git-sha>`
-
-### On a version tag (`v*`)
+### On any tag
 
 Tag the commit and push the tag:
 
 ```sh
-git tag v25
-git push origin v25
+git tag 25
+git push origin 25
 ```
 
-This pushes to **both registries**, stripping the leading `v` for the Docker tag:
+The git tag is used directly as the Docker image tag:
 
-| Registry | Tags pushed |
-|---|---|
-| Docker Hub | `skyledge/java-chamber:25`, `skyledge/java-chamber:latest` |
-| GHCR | `ghcr.io/skyledge/docker-java-chamber:25`, `ghcr.io/skyledge/docker-java-chamber:<git-sha>` |
+- `skyledge/java-chamber:25`
+- `skyledge/java-chamber:latest`
 
 ### Required secrets
 
